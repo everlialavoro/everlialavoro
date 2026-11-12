@@ -1,95 +1,70 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
 const canvas = document.getElementById('bg3d');
-if (canvas) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+if (!canvas) throw new Error('Canvas #bg3d introuvable');
 
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x05070d, 0.028);
+/* ============ RENDERER ============ */
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.z = 15;
+/* ============ SCENE & CAMERA ============ */
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x0a0e17, 16, 34);
 
-  const COUNT = 2600;
-  const positions = new Float32Array(COUNT * 3);
-  const colors = new Float32Array(COUNT * 3);
-  const gold = new THREE.Color('#e5c06a');
-  const emerald = new THREE.Color('#2ee6a8');
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 3.8, 10);
+camera.lookAt(0, 0.9, 0);
 
-  for (let i = 0; i < COUNT; i++) {
-    const r = 6 + Math.random() * 16;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(Math.random() * 2 - 1);
-    positions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
-    positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-    positions[i * 3 + 2] = r * Math.cos(phi);
-    const c = gold.clone().lerp(emerald, Math.random());
-    colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-  }
+/* ============ LIGHTS ============ */
+scene.add(new THREE.AmbientLight(0x506080, 0.55));
 
-  const pGeo = new THREE.BufferGeometry();
-  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  const pMat = new THREE.PointsMaterial({
-    size: 0.07, vertexColors: true, transparent: true, opacity: 0.85,
-    blending: THREE.AdditiveBlending, depthWrite: false
-  });
-  const particles = new THREE.Points(pGeo, pMat);
-  scene.add(particles);
+const key = new THREE.DirectionalLight(0xffe4b5, 2.1);
+key.position.set(6, 10, 5);
+key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+key.shadow.camera.left = -12;
+key.shadow.camera.right = 12;
+key.shadow.camera.top = 12;
+key.shadow.camera.bottom = -12;
+key.shadow.camera.near = 0.5;
+key.shadow.camera.far = 30;
+key.shadow.bias = -0.0006;
+scene.add(key);
 
-  const knot = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(3, 0.32, 200, 26),
-    new THREE.MeshBasicMaterial({ color: 0xe5c06a, wireframe: true, transparent: true, opacity: 0.22 })
-  );
-  knot.position.set(7, 0, -8);
-  scene.add(knot);
+const fill = new THREE.PointLight(0x2ee6a8, 22, 18, 2);
+fill.position.set(-5, 3, 3);
+scene.add(fill);
 
-  const ico = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(2.4, 1),
-    new THREE.MeshBasicMaterial({ color: 0x2ee6a8, wireframe: true, transparent: true, opacity: 0.18 })
-  );
-  ico.position.set(-8, 2, -5);
-  scene.add(ico);
+const rim = new THREE.PointLight(0xff6b4a, 16, 16, 2);
+rim.position.set(4, 4, -5);
+scene.add(rim);
 
-  const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(5, 22, 22),
-    new THREE.MeshBasicMaterial({ color: 0x9aa6bb, wireframe: true, transparent: true, opacity: 0.06 })
-  );
-  sphere.position.set(0, 0, -4);
-  scene.add(sphere);
+/* ============ GROUND ============ */
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(50, 50),
+  new THREE.MeshStandardMaterial({ color: 0x0a0e17, roughness: 1, metalness: 0 })
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -2.2;
+ground.receiveShadow = true;
+scene.add(ground);
 
-  const mouse = { x: 0, y: 0 };
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-  });
+/* ============ DESK GROUP ============ */
+const deskGroup = new THREE.Group();
+scene.add(deskGroup);
 
-  const clock = new THREE.Clock();
+// Wood surface
+const deskMat = new THREE.MeshStandardMaterial({ color: 0x5c3a22, roughness: 0.65, metalness: 0.05 });
+const deskTop = new THREE.Mesh(new THREE.BoxGeometry(9, 0.32, 4.5), deskMat);
+deskTop.castShadow = true;
+deskTop.receiveShadow = true;
+deskGroup.add(deskTop);
 
-  function animate() {
-    const t = clock.getElapsedTime();
-    particles.rotation.y = t * 0.035;
-    particles.rotation.x = Math.sin(t * 0.1) * 0.08;
-    knot.rotation.x = t * 0.18;
-    knot.rotation.y = t * 0.28;
-    ico.rotation.x = -t * 0.14;
-    ico.rotation.y = t * 0.22;
-    sphere.rotation.y = t * 0.06;
-
-    camera.position.x += (mouse.x * 1.6 - camera.position.x) * 0.03;
-    camera.position.y += (mouse.y * 1.1 - camera.position.y) * 0.03;
-    camera.lookAt(0, 0, 0);
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-}
+// Legs
+const legMat = new THREE.MeshStandardMaterial({ color: 0x3a2517, roughness: 0.8 });
+[-4
