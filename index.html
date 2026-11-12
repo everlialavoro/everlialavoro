@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="EVERLIA PROGETTO — Candidature e assunzioni. Invia la tua candidatura e ricevi il contratto entro 24 ore." />
+<title>EVERLIA PROGETTO — Candidature & Recrutement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<canvas id="bg3d"></canvas>
+<div class="bg-overlay"></div>
+
+<header class="site-header">
+  <a href="#" class="brand">
+    <span class="brand-mark">E</span>
+    <span class="brand-text">EVERLIA <em>PROGETTO</em></span>
+  </a>
+  <nav class="nav">
+    <a href="#pourquoi" data-i18n="nav_why">Perché noi</a>
+    <a href="#postuler" data-i18n="nav_apply">Candidati</a>
+    <a href="#contact" data-i18n="nav_contact">Contatto</a>
+  </nav>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="it" aria-label="Italiano">🇮🇹 IT</button>
+    <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 EN</button>
+    <button class="lang-btn" data-lang="fr" aria-label="Français">🇫🇷 FR</button>
+  </div>
+  <a href="https://wa.me/393500755060" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="pill reveal" data-i18n="hero_badge">Recrutement ouvert — Réponse sous 24 h</span>
+    <h1 class="reveal" data-i18n-html="hero_title"></h1>
+    <p class="lede reveal" data-i18n="hero_lede">Déposez votre candidature en quelques minutes...</p>
+    <div class="hero-actions reveal">
+      <a href="#postuler" class="btn btn-primary" data-i18n="hero_btn_apply">Déposer ma candidature</a>
+      <a href="#pourquoi" class="btn btn-outline" data-i18n="hero_btn_more">En savoir plus</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div><strong>24 h</strong><span data-i18n="stat_response">Réponse garantie</span></div>
+      <div><strong>CDI / CDD</strong><span data-i18n="stat_contracts">Contrats flexibles</span></div>
+      <div><strong>100 %</strong><span data-i18n="stat_training">Formation gratuite</span></div>
+    </div>
+  </section>
+
+  <section id="pourquoi" class="section">
+    <h2 class="section-title reveal" data-i18n="why_title">Pourquoi nous rejoindre</h2>
+    <div class="cards">
+      <article class="card glass reveal">
+        <h3 data-i18n="why_card1_title">Réponse rapide</h3>
+        <p data-i18n="why_card1_text">Chaque candidature est traitée sous 24 heures par notre équipe RH.</p>
+      </article>
+      <article class="card glass reveal">
+        <h3 data-i18n="why_card2_title">Contrats flexibles</h3>
+        <p data-i18n="why_card2_text">CDI ou CDD, temps plein ou temps partiel : choisissez le rythme qui vous convient.</p>
+      </article>
+      <article class="card glass reveal">
+        <h3 data-i18n="why_card3_title">Formation offerte</h3>
+        <p data-i18n="why_card3_text">Une formation gratuite est proposée à tous ceux qui souhaitent monter en compétences.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="postuler" class="section">
+    <h2 class="section-title reveal" data-i18n="form_title">Formulaire de candidature</h2>
+    <p class="section-sub reveal" data-i18n-html="form_subtitle">Tous les champs marqués d'un <strong>*</strong> sont obligatoires.</p>
+
+    <form id="apply-form" class="form glass reveal" novalidate>
+
+      <fieldset class="form-section">
+        <legend><span>01</span> <span data-i18n="form_step1">Informations personnelles</span></legend>
+        <div class="grid-2">
+          <div class="field">
+            <label for="nom" data-i18n="form_nom">Nom complet *</label>
+            <input id="nom" name="nom" type="text" required data-i18n-placeholder="ph_nom" placeholder="Prénom et Nom" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="form_email">Adresse e-mail *</label>
+            <input id="email" name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="vous@exemple.com" autocomplete="email" />
+          </div>
+          <div class="field field-full">
+            <label for="adresse" data-i18n="form_adresse">Adresse complète *</label>
+            <input id="adresse" name="adresse" type="text" required data-i18n-placeholder="ph_adresse" placeholder="Rue, numéro, ville, code postal" autocomplete="street-address" />
+          </div>
+          <div class="field">
+            <label for="pays" data-i18n="form_pays">Pays *</label>
+            <input id="pays" name="pays" type="text" required data-i18n-placeholder="ph_pays" placeholder="Ex : Italie" autocomplete="country-name" />
+          </div>
+          <div class="field field-full">
+            <label for="experiences" data-i18n-html="form_experiences">Expériences <span class="opt">(Facultatif)</span></label>
+            <textarea id="experiences" name="experiences" rows="3" data-i18n-placeholder="ph_experiences" placeholder="Décrivez vos expériences professionnelles..."></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend><span>02</span> <span data-i18n="form_step2">Disponibilité et contrat</span></legend>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_dispo">Serez-vous disponibles pour travailler 7 jours sur 7 pendant 30 à 1 heures de temps ? *</p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="dispo7j" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
+            <label class="pill-opt"><input type="radio" name="dispo7j" value="Non" /><span data-i18n="opt_no">Non</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_autre_travail">Avez-vous déjà un autre travail ? *</p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="autreTravail" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
+            <label class="pill-opt"><input type="radio" name="autreTravail" value="Non" /><span data-i18n="opt_no">Non</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_autre_contrat">Avez-vous déjà un autre contrat de travail ? *</p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="autreContrat" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
+            <label class="pill-opt"><input type="radio" name="autreContrat" value="Non" /><span data-i18n="opt_no">Non</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_type_contrat">Quel contrat souhaitez-vous avoir avec nous ? *</p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDI" required /><span>CDI</span></label>
+            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDD" /><span>CDD</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_temps">Souhaitez-vous travailler à temps partiel ou à temps plein ? *</p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="tempsTravail" value="Temps partiel" required /><span data-i18n="opt_partiel">Temps partiel</span></label>
+            <label class="pill-opt"><input type="radio" name="tempsTravail" value="Temps plein" /><span data-i18n="opt_plein">Temps plein</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n-html="form_q_formation">Souhaitez-vous recevoir une formation pour ce travail ? <span class="opt">(Gratuit et facultatif)</span></p>
+          <div class="pills">
+            <label class="pill-opt"><input type="radio" name="formation" value="Oui" /><span data-i18n="opt_yes">Oui</span></label>
+            <label class="pill-opt"><input type="radio" name="formation" value="Non" /><span data-i18n="opt_no">Non</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" data-i18n="form_q_salaire">Souhaitez-vous recevoir votre salaire par jour, par semaine ou par mois ? *</p>
+          <div class="pills pills-wrap">
+            <label class="pill-opt"><input type="radio" name="salaire" value="Par jour" required /><span data-i18n="opt_jour">Par jour</span></label>
+            <label class="pill-opt"><input type="radio" name="salaire" value="Par semaine" /><span data-i18n="opt_semaine">Par semaine</span></label>
+            <label class="pill-opt"><input type="radio" name="salaire" value="Par mois" /><span data-i18n="opt_mois">Par mois</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend><span>03</span> <span data-i18n="form_step3">Justificatif d'identité</span></legend>
+
+        <div class="field">
+          <label data-i18n="form_doc_type">Choisissez le document à fournir *</label>
+          <div class="pills pills-wrap">
+            <label class="pill-opt"><input type="radio" name="docType" value="Carte d'identité" required /><span data-i18n="opt_carte_id">Carte d'identité</span></label>
+            <label class="pill-opt"><input type="radio" name="docType" value="Permis de conduire" /><span data-i18n="opt_permis">Permis de conduire</span></label>
+            <label class="pill-opt"><input type="radio" name="docType" value="Carte sanitaire" /><span data-i18n="opt_sanitaire">Carte sanitaire</span></label>
+          </div>
+        </div>
+
+        <div class="photos">
+          <div class="photo-slot" data-key="recto" data-facing="environment">
+            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <div class="photo-actions">
+              <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_cam">Prendre la photo</button>
+              <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
+            </div>
+            <p class="photo-label" data-i18n="form_photo_recto">Recto du document *</p>
+          </div>
+
+          <div class="photo-slot" data-key="verso" data-facing="environment">
+            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <div class="photo-actions">
+              <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_cam">Prendre la photo</button>
+              <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
+            </div>
+            <p class="photo-label" data-i18n="form_photo_verso">Verso du document *</p>
+          </div>
+
+          <div class="photo-slot" data-key="selfie" data-facing="user">
+            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <div class="photo-actions">
+              <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_selfie">Prendre le selfie</button>
+              <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
+            </div>
+            <p class="photo-label" data-i18n="form_photo_selfie">Photo selfie (visage) *</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-submit">
+        <button type="submit" id="submit-btn" class="btn btn-primary btn-lg" data-i18n="form_submit">Envoyer ma candidature</button>
+        <p class="form-note" data-i18n="form_note">Vos données sont utilisées uniquement pour le traitement de votre candidature.</p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer id="contact" class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h3>EVERLIA PROGETTO</h3>
+      <p>ZAE la Crouzette<br/>Avenue Ricardo Mazza</p>
+    </div>
+    <div>
+      <h3 data-i18n="footer_contact">Contact</h3>
+      <p><a href="https://wa.me/393500755060" target="_blank" rel="noopener">WhatsApp : (+39) 350 075 5060</a><br/>
+      <a href="mailto:everliajob@inbox.eu">everliajob@inbox.eu</a></p>
+    </div>
+    <div>
+      <h3 data-i18n="footer_apply">Candidature</h3>
+      <p><a href="#postuler" data-i18n="footer_apply_link">Déposer une candidature</a><br/><a href="admin.html">Espace administrateur</a></p>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> EVERLIA PROGETTO. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
+</footer>
+
+<div id="cam-modal" class="cam-modal" hidden>
+  <div class="cam-box">
+    <video id="cam-video" playsinline autoplay muted></video>
+    <div class="cam-bar">
+      <button type="button" id="cam-shot" class="btn btn-primary" data-i18n="cam_shot">Capturer</button>
+      <button type="button" id="cam-close" class="btn btn-outline" data-i18n="cam_cancel">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div id="success-modal" class="modal" hidden>
+  <div class="modal-box glass">
+    <div class="check">✓</div>
+    <h2 data-i18n="success_title">Candidature envoyée</h2>
+    <p data-i18n="success_msg">Votre candidature a été envoyée, elle sera traitée et vous obtiendrez une réponse au plus tard dans les prochains 24 h.</p>
+    <button class="btn btn-primary" id="success-close" data-i18n="success_close">Fermer</button>
+  </div>
+</div>
+
+<script type="module" src="three-bg.js"></script>
+<script type="module" src="lang.js"></script>
+<script type="module" src="form.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
