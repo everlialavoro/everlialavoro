@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="EVERLIA PROGETTO — Candidature e assunzioni. Invia la tua candidatura e ricevi il contratto entro 24 ore." />
-<title>EVERLIA PROGETTO — Candidature & Recrutement</title>
+<title>EVERLIA PROGETTO — Candidature</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -20,60 +20,52 @@
     <span class="brand-text">EVERLIA <em>PROGETTO</em></span>
   </a>
   <nav class="nav">
-    <a href="#pourquoi" data-i18n="nav_why">Perché noi</a>
     <a href="#postuler" data-i18n="nav_apply">Candidati</a>
     <a href="#contact" data-i18n="nav_contact">Contatto</a>
   </nav>
   <div class="lang-switcher">
-    <button class="lang-btn active" data-lang="it" aria-label="Italiano">🇮🇹 IT</button>
-    <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 EN</button>
-    <button class="lang-btn" data-lang="fr" aria-label="Français">🇫🇷 FR</button>
+    <button class="lang-btn active" data-lang="it" aria-label="Italiano">IT</button>
+    <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+    <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
   </div>
-  <a href="https://wa.me/393500755060" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
 </header>
 
 <main>
   <section class="hero">
-    <span class="pill reveal" data-i18n="hero_badge">Recrutement ouvert — Réponse sous 24 h</span>
-    <h1 class="reveal" data-i18n-html="hero_title"></h1>
-    <p class="lede reveal" data-i18n="hero_lede">Déposez votre candidature en quelques minutes...</p>
-    <div class="hero-actions reveal">
-      <a href="#postuler" class="btn btn-primary" data-i18n="hero_btn_apply">Déposer ma candidature</a>
-      <a href="#pourquoi" class="btn btn-outline" data-i18n="hero_btn_more">En savoir plus</a>
-    </div>
-    <div class="hero-stats reveal">
-      <div><strong>24 h</strong><span data-i18n="stat_response">Réponse garantie</span></div>
-      <div><strong>CDI / CDD</strong><span data-i18n="stat_contracts">Contrats flexibles</span></div>
-      <div><strong>100 %</strong><span data-i18n="stat_training">Formation gratuite</span></div>
+    <div class="hero-inner">
+      <span class="eyebrow" data-i18n="hero_eyebrow">Recrutement ouvert · Réponse sous 24 h</span>
+      <h1 class="hero-title" data-i18n-html="hero_title">Rejoignez <span class="accent">EVERLIA PROGETTO</span></h1>
+      <p class="hero-lede" data-i18n="hero_lede">Déposez votre candidature en 3 minutes. Recevez votre contrat de travail sous 24 heures.</p>
+      <div class="hero-cta">
+        <a href="#postuler" class="btn btn-primary" data-i18n="hero_btn_apply">Déposer ma candidature</a>
+        <a href="https://wa.me/393500755060" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span data-i18n="hero_btn_contact">Nous contacter</span>
+        </a>
+      </div>
+      <p class="hero-meta" data-i18n="hero_meta">Réponse sous 24 h · CDI ou CDD · Formation offerte</p>
     </div>
   </section>
 
-  <section id="pourquoi" class="section">
-    <h2 class="section-title reveal" data-i18n="why_title">Pourquoi nous rejoindre</h2>
-    <div class="cards">
-      <article class="card glass reveal">
-        <h3 data-i18n="why_card1_title">Réponse rapide</h3>
-        <p data-i18n="why_card1_text">Chaque candidature est traitée sous 24 heures par notre équipe RH.</p>
-      </article>
-      <article class="card glass reveal">
-        <h3 data-i18n="why_card2_title">Contrats flexibles</h3>
-        <p data-i18n="why_card2_text">CDI ou CDD, temps plein ou temps partiel : choisissez le rythme qui vous convient.</p>
-      </article>
-      <article class="card glass reveal">
-        <h3 data-i18n="why_card3_title">Formation offerte</h3>
-        <p data-i18n="why_card3_text">Une formation gratuite est proposée à tous ceux qui souhaitent monter en compétences.</p>
-      </article>
+  <section class="showcase" aria-label="Espaces de travail">
+    <div class="showcase-grid">
+      <figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop" alt="Modern office" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80&auto=format&fit=crop" alt="Team collaboration" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop" alt="Laptop workspace" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=600&q=80&auto=format&fit=crop" alt="Coffee and notebook" loading="lazy"></figure>
     </div>
   </section>
 
   <section id="postuler" class="section">
-    <h2 class="section-title reveal" data-i18n="form_title">Formulaire de candidature</h2>
-    <p class="section-sub reveal" data-i18n-html="form_subtitle">Tous les champs marqués d'un <strong>*</strong> sont obligatoires.</p>
+    <div class="section-head">
+      <h2 class="section-title" data-i18n="form_title">Formulaire de candidature</h2>
+      <p class="section-sub" data-i18n-html="form_subtitle">Tous les champs marqués d'un <strong>*</strong> sont obligatoires.</p>
+    </div>
 
-    <form id="apply-form" class="form glass reveal" novalidate>
+    <form id="apply-form" class="form" novalidate>
 
       <fieldset class="form-section">
-        <legend><span>01</span> <span data-i18n="form_step1">Informations personnelles</span></legend>
+        <legend><span>01</span><span data-i18n="form_step1">Informations personnelles</span></legend>
         <div class="grid-2">
           <div class="field">
             <label for="nom" data-i18n="form_nom">Nom complet *</label>
@@ -99,7 +91,7 @@
       </fieldset>
 
       <fieldset class="form-section">
-        <legend><span>02</span> <span data-i18n="form_step2">Disponibilité et contrat</span></legend>
+        <legend><span>02</span><span data-i18n="form_step2">Disponibilité et contrat</span></legend>
 
         <div class="q">
           <p class="q-label" data-i18n="form_q_dispo">Serez-vous disponibles pour travailler 7 jours sur 7 pendant 30 à 1 heures de temps ? *</p>
@@ -151,7 +143,7 @@
 
         <div class="q">
           <p class="q-label" data-i18n="form_q_salaire">Souhaitez-vous recevoir votre salaire par jour, par semaine ou par mois ? *</p>
-          <div class="pills pills-wrap">
+          <div class="pills">
             <label class="pill-opt"><input type="radio" name="salaire" value="Par jour" required /><span data-i18n="opt_jour">Par jour</span></label>
             <label class="pill-opt"><input type="radio" name="salaire" value="Par semaine" /><span data-i18n="opt_semaine">Par semaine</span></label>
             <label class="pill-opt"><input type="radio" name="salaire" value="Par mois" /><span data-i18n="opt_mois">Par mois</span></label>
@@ -160,15 +152,72 @@
       </fieldset>
 
       <fieldset class="form-section">
-        <legend><span>03</span> <span data-i18n="form_step3">Justificatif d'identité</span></legend>
+        <legend><span>03</span><span data-i18n="form_step3">Justificatif d'identité</span></legend>
 
-        <div class="field">
-          <label data-i18n="form_doc_type">Choisissez le document à fournir *</label>
-          <div class="pills pills-wrap">
-            <label class="pill-opt"><input type="radio" name="docType" value="Carte d'identité" required /><span data-i18n="opt_carte_id">Carte d'identité</span></label>
-            <label class="pill-opt"><input type="radio" name="docType" value="Permis de conduire" /><span data-i18n="opt_permis">Permis de conduire</span></label>
-            <label class="pill-opt"><input type="radio" name="docType" value="Carte sanitaire" /><span data-i18n="opt_sanitaire">Carte sanitaire</span></label>
-          </div>
+        <p class="q-label" data-i18n="form_doc_type">Choisissez le document à fournir *</p>
+        <div class="doc-grid">
+          <label class="doc-card">
+            <input type="radio" name="docType" value="Carte d'identité" required />
+            <div class="doc-inner">
+              <div class="doc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4.5" width="20" height="15" rx="2.5"/>
+                  <circle cx="8.5" cy="11" r="2.4"/>
+                  <path d="M4.5 16.5c0-1.4 1.8-2.4 4-2.4s4 1 4 2.4"/>
+                  <path d="M14.5 10h4M14.5 13.5h4"/>
+                </svg>
+              </div>
+              <div class="doc-text">
+                <span class="doc-title" data-i18n="opt_carte_id">Carte d'identité</span>
+                <span class="doc-desc" data-i18n="doc_card_id_desc">Document officiel</span>
+              </div>
+              <div class="doc-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </label>
+
+          <label class="doc-card">
+            <input type="radio" name="docType" value="Permis de conduire" />
+            <div class="doc-inner">
+              <div class="doc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4.5" width="20" height="15" rx="2.5"/>
+                  <path d="M5.5 14l1.2-3.2a1.6 1.6 0 0 1 1.5-1h6.6a1.6 1.6 0 0 1 1.5 1L17.5 14"/>
+                  <circle cx="7.5" cy="15" r="1.5"/>
+                  <circle cx="16.5" cy="15" r="1.5"/>
+                  <path d="M6 8h4"/>
+                </svg>
+              </div>
+              <div class="doc-text">
+                <span class="doc-title" data-i18n="opt_permis">Permis de conduire</span>
+                <span class="doc-desc" data-i18n="doc_card_permis_desc">Permis valide</span>
+              </div>
+              <div class="doc-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </label>
+
+          <label class="doc-card">
+            <input type="radio" name="docType" value="Carte sanitaire" />
+            <div class="doc-inner">
+              <div class="doc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4.5" width="20" height="15" rx="2.5"/>
+                  <path d="M12 15.5s-2.3-1.4-2.3-3c0-.8.6-1.4 1.4-1.4.5 0 .8.3.9.6.1-.3.4-.6.9-.6.8 0 1.4.6 1.4 1.4 0 1.6-2.3 3-2.3 3z"/>
+                  <path d="M5.5 8.5h3"/>
+                </svg>
+              </div>
+              <div class="doc-text">
+                <span class="doc-title" data-i18n="opt_sanitaire">Carte sanitaire</span>
+                <span class="doc-desc" data-i18n="doc_card_sanitaire_desc">Tessera sanitaire</span>
+              </div>
+              <div class="doc-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </label>
         </div>
 
         <div class="photos">
@@ -239,7 +288,7 @@
 </div>
 
 <div id="success-modal" class="modal" hidden>
-  <div class="modal-box glass">
+  <div class="modal-box">
     <div class="check">✓</div>
     <h2 data-i18n="success_title">Candidature envoyée</h2>
     <p data-i18n="success_msg">Votre candidature a été envoyée, elle sera traitée et vous obtiendrez une réponse au plus tard dans les prochains 24 h.</p>
