@@ -43,7 +43,7 @@
           <span data-i18n="hero_btn_contact">Nous contacter</span>
         </a>
       </div>
-      <p class="hero-meta" data-i18n="hero_meta">Réponse sous 24 h · CDI ou CDD · Formation offerte</p>
+      <p class="hero-meta" data-i18n="hero_meta">Réponse sous 24 h · Contrats flexibles · Formation offerte</p>
     </div>
   </section>
 
@@ -124,8 +124,9 @@
         <div class="q">
           <p class="q-label" data-i18n="form_q_type_contrat">Quel contrat souhaitez-vous avoir avec nous ? *</p>
           <div class="pills">
-            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDI" required /><span>CDI</span></label>
-            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDD" /><span>CDD</span></label>
+            <!-- Modification ici : data-i18n ajouté pour traduire l'affichage -->
+            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDI" required /><span data-i18n="opt_cdi">CDI</span></label>
+            <label class="pill-opt"><input type="radio" name="typeContrat" value="CDD" /><span data-i18n="opt_cdd">CDD</span></label>
           </div>
           <span class="field-error" data-error-for="typeContrat"></span>
         </div>
@@ -300,7 +301,6 @@
     </div>
     <div>
       <h3 data-i18n="footer_apply">Candidature</h3>
-      <!-- LE LIEN VERS L'ADMIN A ÉTÉ SUPPRIMÉ ICI -->
       <p><a href="#postuler" data-i18n="footer_apply_link">Déposer une candidature</a></p>
     </div>
   </div>
