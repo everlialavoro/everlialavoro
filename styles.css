@@ -28,12 +28,14 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit}
 [hidden]{display:none !important}
 
+/* Grain subtil */
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   opacity:0.035;mix-blend-mode:overlay;
 }
 
+/* Background 3D */
 #bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:-2;display:block}
 .bg-overlay{
   position:fixed;inset:0;z-index:-1;pointer-events:none;
@@ -42,24 +44,40 @@ body::after{
     linear-gradient(180deg, rgba(10,14,23,0.6) 0%, rgba(10,14,23,0.1) 40%, rgba(10,14,23,0.85) 100%);
 }
 
+/* ===== Header & Logo ===== */
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:flex;align-items:center;gap:24px;
-  padding:16px clamp(16px,4vw,48px);
+  padding:12px clamp(16px,4vw,48px);
   background:rgba(10,14,23,0.55);
   backdrop-filter:blur(16px) saturate(140%);
   -webkit-backdrop-filter:blur(16px) saturate(140%);
   border-bottom:1px solid var(--border);
 }
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;letter-spacing:0.02em}
-.brand-mark{
-  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--amber) 0%,#c97a1e 100%);
-  color:var(--bg);font-weight:800;font-family:var(--font-display);font-size:15px;
-  box-shadow:0 4px 14px -4px rgba(232,168,56,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+
+.brand{display:flex;align-items:center;text-decoration:none;}
+
+/* LOGO DANS LE HEADER */
+.brand-logo{
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  /* Rend le fond bleu du logo transparent pour se fondre dans le site */
+  mix-blend-mode: screen; 
 }
-.brand-text{font-size:15px;color:var(--cream)}
-.brand-text em{font-style:italic;color:var(--amber);font-weight:500;font-family:var(--font-display)}
+@media (max-width: 640px) {
+  .brand-logo { height: 32px; } /* Plus petit sur mobile */
+}
+
+/* LOGO DANS LE FOOTER */
+.footer-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 16px;
+  mix-blend-mode: screen;
+}
+
 .nav{margin-left:auto;display:flex;gap:28px;font-size:13.5px;color:var(--muted);font-weight:500;letter-spacing:0.02em}
 .nav a{position:relative;transition:color .2s}
 .nav a:hover{color:var(--cream)}
@@ -69,7 +87,9 @@ body::after{
   display:flex;gap:3px;
   background:rgba(245,239,228,0.04);
   padding:3px;border-radius:999px;border:1px solid var(--border);
+  margin-left:auto;
 }
+@media (min-width:821px){ .lang-switcher { margin-left: 0; } }
 .lang-btn{
   background:transparent;border:none;color:var(--muted);
   font-size:11.5px;font-weight:600;letter-spacing:0.06em;
@@ -79,6 +99,7 @@ body::after{
 .lang-btn.active{background:var(--amber);color:var(--bg)}
 .lang-btn:hover:not(.active){color:var(--cream)}
 
+/* ===== Buttons ===== */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   border:none;cursor:pointer;border-radius:11px;font-weight:600;
@@ -104,6 +125,7 @@ body::after{
 .btn-danger:hover{background:rgba(255,107,74,0.2)}
 .btn[disabled]{opacity:0.55;cursor:not-allowed;transform:none !important}
 
+/* ===== Hero ===== */
 main{position:relative;z-index:1}
 .hero{
   min-height:92vh;display:flex;align-items:center;justify-content:center;
@@ -154,7 +176,7 @@ main{position:relative;z-index:1}
   letter-spacing:0.06em;text-transform:uppercase;font-weight:500;
 }
 
-/* ===== Showcase — single wide image ===== */
+/* ===== Image Showcase ===== */
 .showcase{
   position:relative;z-index:1;
   max-width:1240px;margin:0 auto;
@@ -182,6 +204,7 @@ main{position:relative;z-index:1}
   .showcase-hero{aspect-ratio:4/3;border-radius:16px}
 }
 
+/* ===== Section ===== */
 .section{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:40px 24px 100px}
 .section-head{text-align:center;margin-bottom:40px}
 .section-title{
@@ -196,6 +219,7 @@ main{position:relative;z-index:1}
 .section-sub{color:var(--muted);margin:16px 0 0;font-size:14.5px}
 .section-sub strong{color:var(--amber)}
 
+/* ===== Form ===== */
 .form{
   background:linear-gradient(180deg, rgba(245,239,228,0.03) 0%, rgba(245,239,228,0.015) 100%);
   border:1px solid var(--border);
@@ -238,7 +262,7 @@ main{position:relative;z-index:1}
 }
 .field textarea{resize:vertical;min-height:92px}
 
-/* ===== Invalid states ===== */
+/* ===== Error States (Champs obligatoires) ===== */
 .field.invalid input,
 .field.invalid textarea,
 .field.invalid select{
@@ -293,6 +317,7 @@ main{position:relative;z-index:1}
 }
 .pill-opt input:focus-visible + span{box-shadow:0 0 0 3px rgba(232,168,56,0.3)}
 
+/* ===== Documents ===== */
 .doc-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;
 }
@@ -354,6 +379,7 @@ main{position:relative;z-index:1}
   background:rgba(255,92,92,0.04);
 }
 
+/* Bouton Supprimer la photo */
 .photo-remove{
   position:absolute;top:22px;right:22px;
   width:30px;height:30px;border-radius:50%;
@@ -364,7 +390,7 @@ main{position:relative;z-index:1}
   box-shadow:0 4px 14px rgba(0,0,0,0.5);
   transition:transform .2s,background .2s;
 }
-.photo-remove:hover{transform:scale(1.12);background:#ff3b3b}
+.photo-remove:hover{transform:scale(1.12);background:#ff3b3b;}
 
 .photo-preview{
   aspect-ratio:4/3;border-radius:10px;overflow:hidden;
@@ -387,6 +413,7 @@ main{position:relative;z-index:1}
 .form-submit{text-align:center;padding-top:14px}
 .form-note{font-size:11.5px;color:var(--muted);margin-top:14px;font-style:italic;max-width:520px;margin-left:auto;margin-right:auto}
 
+/* ===== Modals (Camera & Success) ===== */
 .cam-modal{
   position:fixed;inset:0;z-index:100;background:rgba(5,7,13,0.92);
   display:grid;place-items:center;padding:20px;backdrop-filter:blur(8px);
@@ -412,6 +439,7 @@ main{position:relative;z-index:1}
 .modal-box h2{font-family:var(--font-display);font-size:24px;font-weight:500;margin:0 0 12px}
 .modal-box p{color:var(--muted);font-size:14.5px;margin:0 0 26px;line-height:1.7}
 
+/* ===== Footer ===== */
 .site-footer{
   position:relative;z-index:1;margin-top:20px;padding:60px clamp(20px,5vw,60px) 30px;
   background:rgba(10,14,23,0.7);border-top:1px solid var(--border);
@@ -424,6 +452,7 @@ main{position:relative;z-index:1}
 .site-footer a:hover{color:var(--amber)}
 .copyright{text-align:center;font-size:12px;color:#5a6172;margin:0;padding-top:26px;border-top:1px solid var(--border)}
 
+/* ===== Reveal Animations ===== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(0.2,0.7,0.3,1),transform .8s cubic-bezier(0.2,0.7,0.3,1)}
 .reveal.visible{opacity:1;transform:none}
 
@@ -432,7 +461,9 @@ main{position:relative;z-index:1}
   .section{padding:20px 16px 70px}
 }
 
-/* ===== ADMIN (prêt pour prochaine étape) ===== */
+/* =====================================================
+   ADMIN (Prêt pour l'étape suivante)
+   ===================================================== */
 .admin-body{padding-top:0}
 .admin-wrap{max-width:1200px;margin:0 auto;padding:100px 24px 60px;position:relative;z-index:1}
 .login-box{
