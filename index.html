@@ -47,13 +47,10 @@
     </div>
   </section>
 
-  <section class="showcase" aria-label="Espaces de travail">
-    <div class="showcase-grid">
-      <figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop" alt="Modern office" loading="lazy"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80&auto=format&fit=crop" alt="Team collaboration" loading="lazy"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop" alt="Laptop workspace" loading="lazy"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=600&q=80&auto=format&fit=crop" alt="Coffee and notebook" loading="lazy"></figure>
-    </div>
+  <section class="showcase" aria-label="Espace de travail">
+    <figure class="showcase-hero">
+      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=85&auto=format&fit=crop" alt="Espace de travail avec ordinateur, café et stylos" loading="lazy">
+    </figure>
   </section>
 
   <section id="postuler" class="section">
@@ -70,18 +67,22 @@
           <div class="field">
             <label for="nom" data-i18n="form_nom">Nom complet *</label>
             <input id="nom" name="nom" type="text" required data-i18n-placeholder="ph_nom" placeholder="Prénom et Nom" autocomplete="name" />
+            <span class="field-error" data-error-for="nom"></span>
           </div>
           <div class="field">
             <label for="email" data-i18n="form_email">Adresse e-mail *</label>
             <input id="email" name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="vous@exemple.com" autocomplete="email" />
+            <span class="field-error" data-error-for="email"></span>
           </div>
           <div class="field field-full">
             <label for="adresse" data-i18n="form_adresse">Adresse complète *</label>
             <input id="adresse" name="adresse" type="text" required data-i18n-placeholder="ph_adresse" placeholder="Rue, numéro, ville, code postal" autocomplete="street-address" />
+            <span class="field-error" data-error-for="adresse"></span>
           </div>
           <div class="field">
             <label for="pays" data-i18n="form_pays">Pays *</label>
             <input id="pays" name="pays" type="text" required data-i18n-placeholder="ph_pays" placeholder="Ex : Italie" autocomplete="country-name" />
+            <span class="field-error" data-error-for="pays"></span>
           </div>
           <div class="field field-full">
             <label for="experiences" data-i18n-html="form_experiences">Expériences <span class="opt">(Facultatif)</span></label>
@@ -99,6 +100,7 @@
             <label class="pill-opt"><input type="radio" name="dispo7j" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
             <label class="pill-opt"><input type="radio" name="dispo7j" value="Non" /><span data-i18n="opt_no">Non</span></label>
           </div>
+          <span class="field-error" data-error-for="dispo7j"></span>
         </div>
 
         <div class="q">
@@ -107,6 +109,7 @@
             <label class="pill-opt"><input type="radio" name="autreTravail" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
             <label class="pill-opt"><input type="radio" name="autreTravail" value="Non" /><span data-i18n="opt_no">Non</span></label>
           </div>
+          <span class="field-error" data-error-for="autreTravail"></span>
         </div>
 
         <div class="q">
@@ -115,6 +118,7 @@
             <label class="pill-opt"><input type="radio" name="autreContrat" value="Oui" required /><span data-i18n="opt_yes">Oui</span></label>
             <label class="pill-opt"><input type="radio" name="autreContrat" value="Non" /><span data-i18n="opt_no">Non</span></label>
           </div>
+          <span class="field-error" data-error-for="autreContrat"></span>
         </div>
 
         <div class="q">
@@ -123,6 +127,7 @@
             <label class="pill-opt"><input type="radio" name="typeContrat" value="CDI" required /><span>CDI</span></label>
             <label class="pill-opt"><input type="radio" name="typeContrat" value="CDD" /><span>CDD</span></label>
           </div>
+          <span class="field-error" data-error-for="typeContrat"></span>
         </div>
 
         <div class="q">
@@ -131,6 +136,7 @@
             <label class="pill-opt"><input type="radio" name="tempsTravail" value="Temps partiel" required /><span data-i18n="opt_partiel">Temps partiel</span></label>
             <label class="pill-opt"><input type="radio" name="tempsTravail" value="Temps plein" /><span data-i18n="opt_plein">Temps plein</span></label>
           </div>
+          <span class="field-error" data-error-for="tempsTravail"></span>
         </div>
 
         <div class="q">
@@ -148,6 +154,7 @@
             <label class="pill-opt"><input type="radio" name="salaire" value="Par semaine" /><span data-i18n="opt_semaine">Par semaine</span></label>
             <label class="pill-opt"><input type="radio" name="salaire" value="Par mois" /><span data-i18n="opt_mois">Par mois</span></label>
           </div>
+          <span class="field-error" data-error-for="salaire"></span>
         </div>
       </fieldset>
 
@@ -219,40 +226,62 @@
             </div>
           </label>
         </div>
+        <span class="field-error" data-error-for="docType"></span>
 
         <div class="photos">
           <div class="photo-slot" data-key="recto" data-facing="environment">
-            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <button type="button" class="photo-remove js-photo-remove" aria-label="Supprimer" hidden>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="photo-preview">
+              <span class="photo-empty" data-i18n="no_photo">Aucune photo</span>
+              <img class="photo-img" alt="" style="display:none" />
+            </div>
             <div class="photo-actions">
               <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_cam">Prendre la photo</button>
               <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
             </div>
             <p class="photo-label" data-i18n="form_photo_recto">Recto du document *</p>
+            <p class="photo-error field-error" data-error-for="recto"></p>
           </div>
 
           <div class="photo-slot" data-key="verso" data-facing="environment">
-            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <button type="button" class="photo-remove js-photo-remove" aria-label="Supprimer" hidden>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="photo-preview">
+              <span class="photo-empty" data-i18n="no_photo">Aucune photo</span>
+              <img class="photo-img" alt="" style="display:none" />
+            </div>
             <div class="photo-actions">
               <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_cam">Prendre la photo</button>
               <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
             </div>
             <p class="photo-label" data-i18n="form_photo_verso">Verso du document *</p>
+            <p class="photo-error field-error" data-error-for="verso"></p>
           </div>
 
           <div class="photo-slot" data-key="selfie" data-facing="user">
-            <div class="photo-preview"><span data-i18n="no_photo">Aucune photo</span></div>
+            <button type="button" class="photo-remove js-photo-remove" aria-label="Supprimer" hidden>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="photo-preview">
+              <span class="photo-empty" data-i18n="no_photo">Aucune photo</span>
+              <img class="photo-img" alt="" style="display:none" />
+            </div>
             <div class="photo-actions">
               <button type="button" class="btn btn-sm btn-primary js-cam" data-i18n="form_btn_selfie">Prendre le selfie</button>
               <label class="btn btn-sm btn-outline"><span data-i18n="form_btn_choose">Choisir</span><input type="file" accept="image/*" hidden /></label>
             </div>
             <p class="photo-label" data-i18n="form_photo_selfie">Photo selfie (visage) *</p>
+            <p class="photo-error field-error" data-error-for="selfie"></p>
           </div>
         </div>
       </fieldset>
 
       <div class="form-submit">
         <button type="submit" id="submit-btn" class="btn btn-primary btn-lg" data-i18n="form_submit">Envoyer ma candidature</button>
-        <p class="form-note" data-i18n="form_note">Vos données sont utilisées uniquement pour le traitement de votre candidature.</p>
+        <p class="form-note" data-i18n="form_note">Vos données sont utilisées uniquement pour le traitement de votre candidature et seront supprimées automatiquement après 48 heures.</p>
       </div>
     </form>
   </section>
